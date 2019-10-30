@@ -1,0 +1,24 @@
+C:\Users\jayso\source\repos\Pita Pit Inventory\bin\Debug\netcoreapp2.1\Pita Pit Inventory.deps.json
+C:\Users\jayso\source\repos\Pita Pit Inventory\bin\Debug\netcoreapp2.1\Pita Pit Inventory.runtimeconfig.json
+C:\Users\jayso\source\repos\Pita Pit Inventory\bin\Debug\netcoreapp2.1\Pita Pit Inventory.runtimeconfig.dev.json
+C:\Users\jayso\source\repos\Pita Pit Inventory\bin\Debug\netcoreapp2.1\Pita Pit Inventory.dll
+C:\Users\jayso\source\repos\Pita Pit Inventory\bin\Debug\netcoreapp2.1\Pita Pit Inventory.pdb
+C:\Users\jayso\source\repos\Pita Pit Inventory\bin\Debug\netcoreapp2.1\Pita Pit Inventory.Views.dll
+C:\Users\jayso\source\repos\Pita Pit Inventory\bin\Debug\netcoreapp2.1\Pita Pit Inventory.Views.pdb
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.csprojAssemblyReference.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.csproj.CoreCompileInputs.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.RazorAssemblyInfo.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.RazorAssemblyInfo.cs
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.AssemblyInfoInputs.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.AssemblyInfo.cs
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.TagHelpers.input.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.TagHelpers.output.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.RazorCoreGenerate.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.RazorTargetAssemblyInfo.cache
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.RazorTargetAssemblyInfo.cs
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.Views.pdb
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.dll
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.pdb
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.csproj.CopyComplete
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Product\AddProduct.g.cshtml.cs
