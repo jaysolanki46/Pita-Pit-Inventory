@@ -13,10 +13,10 @@ namespace Pita_Pit_Inventory.Controllers
             return View();
         }
 
-        [HttpGet("Product/Add")]
-        public IActionResult AddProductPage()
+        [HttpGet("Product/New")]
+        public IActionResult NewProductPage()
         {
-            return View("AddProduct");
+            return View("NewProduct");
         }
 
         [HttpGet("Product/View")]
