@@ -2,76 +2,14 @@
 <html lang="en">
 
 <head>
-
-    @Html.Partial("~/Views/Shared/Header.html")
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-            .switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-            .slider:before {
-                position: absolute;
-                content: "";
-                height: 26px;
-                width: 26px;
-                left: 4px;
-                bottom: 4px;
-                background-color: white;
-                -webkit-transition: .4s;
-                transition: .4s;
-            }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-            .slider.round:before {
-                border-radius: 50%;
-            }
-    </style>
+    <title>Pita Pit - Product</title>
+    @Html.Partial("~/Views/Shared/Header.html")  
 </head>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         @Html.Partial("~/Views/Shared/Nav.html")
 
@@ -81,137 +19,157 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 @Html.Partial("~/Views/Shared/StatusBar.html")
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    
-
                     <!-- Content Row -->
                     <div class="container">
-                        <!-- Page Heading -->
-                        <div class="d-sm-flex align-items-center justify-content-between mb-lg-2">
-                            <h1 class="h-100 mb-0 text-gray-800">Product</h1>
-                        </div>
-                        <div class="card o-hidden border-0 shadow-lg my-2">
-                            <div class="card-body p-0">
-                                <!-- Nested Row within Card Body -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="p-lg-5">
-                                            <form>
-
-                                                <div class="form-group">
-                                                    <label for="productName">Name</label>
-                                                    <input type="text" class="form-control" id="productName" placeholder="Ex. Banana">
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="productPrice">Price</label>
-                                                        <input type="text" class="form-control" id="productPrice" placeholder="Ex. 17">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="productGST">GST</label>
-                                                        <input type="text" class="form-control" id="productGST" placeholder="Ex. 17">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="productPackSize">Pack Size</label>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="productPackSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Select Pack Size
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="#">Box</a>
-                                                                <a class="dropdown-item" href="#">Container</a>
-                                                                <a class="dropdown-item" href="#">Bag</a>
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <!-- Page Heading -->
+                                <div class="d-sm-flex align-items-center justify-content-between mb-lg-2">
+                                    <h1 class="h-100 mb-0 text-gray-800">Product</h1>
+                                </div>
+                                <div class="card o-hidden border-0 shadow-lg my-2">
+                                    <div class="card-body p-0">
+                                        <!-- Nested Row within Card Body -->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="p-lg-5">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="productName">Name</label>
+                                                            <input type="text" class="form-control" id="productName" placeholder="Ex. Banana">
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productPrice">Price</label>
+                                                                <input type="text" class="form-control" id="productPrice" placeholder="Ex. 17">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productGST">GST</label>
+                                                                <input type="text" class="form-control" id="productGST" placeholder="Ex. 17">
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="productQtyPack">Qty In Pack</label>
-                                                        <input type="number" class="form-control" id="productQtyPack" placeholder="Ex. 17">
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="productQty">Qty</label>
-                                                        <input type="number" class="form-control" id="productQty" placeholder="Ex. 17">
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-3">
-                                                        <label for="productGroup">Group</label>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="productGroup" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Select Group
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="#">Box</a>
-                                                                <a class="dropdown-item" href="#">Container</a>
-                                                                <a class="dropdown-item" href="#">Bag</a>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-3">
+                                                                <label for="productGroup">Group</label>
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        Dropdown
+                                                                    </button>
+                                                                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                                                                        <a class="dropdown-item" href="#">Action</a>
+                                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                                        <a class="dropdown-item" href="#">Something else here</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-3">
+                                                                <label for="productLocation">Location</label>
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        Dropdown
+                                                                    </button>
+                                                                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                                                                        <a class="dropdown-item" href="#">Action</a>
+                                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                                        <a class="dropdown-item" href="#">Something else here</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productIsRecipe">Recipe ?</label></br>
+                                                                <label class="switch">
+                                                                    <input type="checkbox" id="productIsRecipe" checked>
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group col-md-12">
+                                                                <label for="productDescription">Description</label>
+                                                                <textarea class="form-control" id="productDescription" rows="3" placeholder="Ex. Banana should only used for the smoothies !! ......"></textarea>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="productLocation">Location</label>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="productLocation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Select Location
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="#">Chiller</a>
-                                                                <a class="dropdown-item" href="#">Freezer</a>
-                                                                <a class="dropdown-item" href="#">Normal</a>
+                                                        <button type="submit" class="btn btn-primary">ADD</button>
+                                                        <button type="button" class="btn btn-danger">CANCEL</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <!-- Page Heading -->
+                                <div class="d-sm-flex align-items-center justify-content-between mb-lg-2">
+                                    <h1 class="h-100 mb-5 text-gray-800"></h1>
+                                </div>
+                                <div class="card o-hidden mb-2 border-0 shadow-lg my-2">
+                                    <div class="card-body p-0">
+                                        <!-- Nested Row within Card Body -->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="p-lg-5">
+                                                    <form>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="productPackSize">Pack Size</label>
+                                                                <div class="dropdown">
+                                                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        Dropdown
+                                                                    </button>
+                                                                    <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                                                                        <a class="dropdown-item" href="#">Action</a>
+                                                                        <a class="dropdown-item" href="#">Another action</a>
+                                                                        <a class="dropdown-item" href="#">Something else here</a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="productIsRecipe">Recipe ?</label></br>
-                                                        <label class="switch">
-                                                            <input type="checkbox" id="productIsRecipe" checked>
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-group col-12">
-                                                        <hr>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label for="productDescription">Description</label>
-                                                        <textarea class="form-control" id="productDescription" rows="3" placeholder="Ex. Banana should only used for the smoothies !! ......"></textarea>
-                                                    </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="productQtyPack">Qty In Pack</label>
+                                                                <input type="number" class="form-control" id="productQtyPack" placeholder="Ex. 17">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="productQty">Qty</label>
+                                                                <input type="number" class="form-control" id="productQty" placeholder="Ex. 17">
+                                                            </div>  
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">ADD</button>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <!-- /.container-fluid -->
 
                 </div>
-            <!-- End of Main Content -->
-            <!-- Footer -->
-            @Html.Partial("~/Views/Shared/footer.html")
-            <!-- End of Footer -->
+                <!-- End of Main Content -->
+                <!-- Footer -->
+                @Html.Partial("~/Views/Shared/footer.html")
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    </div>
-    <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
 
-    
-    @Html.Partial("~/Views/Shared/FooterJS.html")
+        @Html.Partial("~/Views/Shared/FooterJS.html")
 
 </body>
 

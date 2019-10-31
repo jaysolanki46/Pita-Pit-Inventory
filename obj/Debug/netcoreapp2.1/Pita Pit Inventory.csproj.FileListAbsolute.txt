@@ -22,3 +22,4 @@ C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit 
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.pdb
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Pita Pit Inventory.csproj.CopyComplete
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Product\AddProduct.g.cshtml.cs
+C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Product\ViewProducts.g.cshtml.cs

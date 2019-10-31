@@ -14,9 +14,15 @@ namespace Pita_Pit_Inventory.Controllers
         }
 
         [HttpGet("Product/Add")]
-        public IActionResult Add()
+        public IActionResult AddProductPage()
         {
             return View("AddProduct");
+        }
+
+        [HttpGet("Product/View")]
+        public IActionResult ViewProductPage()
+        {
+            return View("ViewProducts");
         }
     }
 }
