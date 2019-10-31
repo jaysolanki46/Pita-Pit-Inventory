@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pita Pit - Supplier</title>
+    @Html.Partial("~/Views/Shared/Header.html")
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        @Html.Partial("~/Views/Shared/Nav.html")
+
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                @Html.Partial("~/Views/Shared/StatusBar.html")
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <h1 class="h3 mb-2 text-gray-800">Supplier</h1>
+                    <div class="mb-4">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="card o-hidden border-0 shadow-lg my-0">
+                                    <div class="card-body p-0">
+                                        <!-- Nested Row within Card Body -->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="p-lg-5">
+                                                    <form>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="supplierCode">Code</label>
+                                                                <input type="text" class="form-control" id="supplierCode" placeholder="#00122">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="supplierName">Name</label>
+                                                                <input type="text" class="form-control" id="supplierName" placeholder="Ex. John Devis">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="supplierAddress">Address</label>
+                                                                <textarea class="form-control" id="supplierAddress" rows="3" placeholder="Ex. 1/17 Plenty avenue, Albany, Auckland 2150"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="supplierContact">Contact</label>
+                                                                <input type="text" class="form-control" id="supplierContact" placeholder="Ex. 022-652-9854">
+                                                            </div>
+                                                        </div>
+                                                            <button type="submit" class="btn btn-primary">ADD</button>
+                                                            <button type="button" class="btn btn-danger">CANCEL</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="card o-hidden mb-2 border-0 shadow-lg my-0">
+                                    <div class="card-body p-0">
+                                        <!-- Nested Row within Card Body -->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="p-lg-5">
+                                                    <form>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="productGroup">Product List</label>
+                                                                <select class="selectpicker" multiple>
+                                                                    <option>Mustard</option>
+                                                                    <option>Ketchup</option>
+                                                                    <option>Barbecue</option>
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="supplierNote">Note</label>
+                                                                <textarea class="form-control" id="supplierNote" rows="3" placeholder="Ex. Available during weekdays only !"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+                <!-- Footer -->
+                @Html.Partial("~/Views/Shared/footer.html")
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+
+        @Html.Partial("~/Views/Shared/FooterJS.html")
+
+
+
+</body>
+
+</html>
+<script type="text/javascript">
+  $('select').selectpicker();
+</script>

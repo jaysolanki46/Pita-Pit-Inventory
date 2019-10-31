@@ -20,9 +20,21 @@ namespace Pita_Pit_Inventory.Controllers
         }
 
         [HttpGet("Product/View")]
-        public IActionResult ViewProductPage()
+        public IActionResult ViewProductsPage()
         {
             return View("ViewProducts");
+        }
+
+        [HttpGet("Product/Groups")]
+        public IActionResult Groups()
+        {
+            return View("Groups");
+        }
+
+        [HttpGet("Product/Locations")]
+        public IActionResult Locations()
+        {
+            return View("Locations");
         }
     }
 }
