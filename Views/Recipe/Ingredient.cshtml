@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Pita Pit - Locations</title>
+    <title>Pita Pit - Ingredient</title>
     @Html.Partial("~/Views/Shared/Header.html")
 </head>
 
@@ -24,11 +24,7 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Content Row -->
-
-                    <h1 class="h3 mb-2 text-gray-800">Location</h1>
-
+                    <h1 class="h3 mb-2 text-gray-800">Ingredient</h1>
                     <div class="mb-4">
                         <div class="row">
                             <div class="col-lg-12">
@@ -38,13 +34,33 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="p-lg-5">
-                                                    <form class="form-inline">
-                                                        <div class="form-group mr-2">
-                                                            <label for="groupName">Name</label> &nbsp;&nbsp;
-                                                            <input type="text" class="form-control" id="groupName" placeholder="Ex. Chiller">
+                                                    <form>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="ingredientItemCode">Code</label>
+                                                                <input type="text" class="form-control" id="ingredientItemCode" placeholder="Ex. #0215">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="ingredientItemName">Name</label>
+                                                                <input type="text" class="form-control" id="ingredientItemName" placeholder="Ex. Onions/Sour Cream">
+                                                            </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">ADD</button> &nbsp;&nbsp;
-                                                        <button type="reset" class="btn btn-danger">CANCEL</button>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="ingredientItemSize">Size</label>
+                                                                <select class="form-control selectpicker">
+                                                                    <option>Gram</option>
+                                                                    <option>Kg</option>
+                                                                    <option>Drop</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="ingredientItemQty">Qty</label>
+                                                                <input type="text" class="form-control" id="ingredientItemQty" placeholder="Ex. 18/18gm">
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">ADD</button>
+                                                        <button type="button" class="btn btn-danger">CANCEL</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -59,7 +75,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Location List</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Ingredient List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -68,6 +84,8 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
+                                            <th>Size</th>
+                                            <th>Qty</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -75,13 +93,17 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
+                                            <th>Size</th>
+                                            <th>Qty</th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <td>9854</td>
-                                            <td>Chiller</td>
+                                            <td>8521</td>
+                                            <td>SM Latus</td>
+                                            <td>gm</td>
+                                            <td>25</td>
                                             <td>
                                                 <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
@@ -92,8 +114,10 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>8547</td>
-                                            <td>Fridge</td>
+                                            <td>2584</td>
+                                            <td>LG Latus</td>
+                                            <td>gm</td>
+                                            <td>40</td>
                                             <td>
                                                 <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
@@ -112,6 +136,7 @@
                     </div>
 
                     <!-- /.container-fluid -->
+
                 </div>
                 <!-- End of Main Content -->
                 <!-- Footer -->
@@ -134,5 +159,7 @@
 </body>
 
 </html>
-
+<script type="text/javascript">
+  $('select').ingredientItemSize();
+</script>
 

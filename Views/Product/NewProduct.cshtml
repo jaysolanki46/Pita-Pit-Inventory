@@ -52,29 +52,19 @@
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-3">
                                                                         <label for="productGroup">Group</label>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                Dropdown
-                                                                            </button>
-                                                                            <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                                            </div>
-                                                                        </div>
+                                                                        <select class="form-control productGroupSelectPicker">
+                                                                            <option>Beverages</option>
+                                                                            <option>Sauces</option>
+                                                                            <option>Veggies</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group col-md-3">
                                                                         <label for="productLocation">Location</label>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                Dropdown
-                                                                            </button>
-                                                                            <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                                            </div>
-                                                                        </div>
+                                                                        <select class="form-control productLocationSelectPicker">
+                                                                            <option>Chiller</option>
+                                                                            <option>Fridge</option>
+                                                                            <option>Normal</option>
+                                                                        </select>
                                                                     </div>
                                                                     <div class="form-group col-md-6">
                                                                         <label for="productIsRecipe">Recipe ?</label></br>
@@ -98,7 +88,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3"> 
-                                        <div class="card o-hidden mb-2 border-0 shadow-lg my-0">
+                                        <div class="card h-100 o-hidden mb-2 border-0 shadow-lg my-0">
                                             <div class="card-body p-0">
                                                 <!-- Nested Row within Card Body -->
                                                 <div class="row">
@@ -108,16 +98,11 @@
                                                                 <div class="form-row">
                                                                     <div class="form-group col-md-12">
                                                                         <label for="productPackSize">Pack Size</label>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                Dropdown
-                                                                            </button>
-                                                                            <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                                                                                <a class="dropdown-item" href="#">Action</a>
-                                                                                <a class="dropdown-item" href="#">Another action</a>
-                                                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                                            </div>
-                                                                        </div>
+                                                                        <select class="form-control productPackSizeSelectPicker">
+                                                                            <option>Box</option>
+                                                                            <option>Packet</option>
+                                                                            <option>Piece</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-row">
@@ -166,5 +151,9 @@
 </body>
 
 </html>
-
+<script type="text/javascript">
+    $('select').productGroupSelectPicker();
+    $('select').productLocationSelectPicker();
+    $('select').productPackSizeSelectPicker();
+</script>
 

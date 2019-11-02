@@ -44,7 +44,7 @@ namespace AspNetCore
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n");
             EndContext();
             BeginContext(37, 105, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "522f52ea6066476d9d3e6da2cfced7fc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "888bab0bd45f45b4a08382194cb08d3b", async() => {
                 BeginContext(43, 47, true);
                 WriteLiteral("\r\n    <title>Pita Pit - Locations</title>\r\n    ");
                 EndContext();
@@ -74,7 +74,7 @@ Write(Html.Partial("~/Views/Shared/Header.html"));
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(146, 5842, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a238710cf18457d98bd8fa71bfbd948", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db330d002fdb441392cc9ad50ae1b1f0", async() => {
                 BeginContext(166, 89, true);
                 WriteLiteral("\r\n\r\n    <!-- Page Wrapper -->\r\n    <div id=\"wrapper\">\r\n        <!-- Sidebar -->\r\n        ");
                 EndContext();

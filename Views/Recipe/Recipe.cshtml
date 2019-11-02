@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Pita Pit - Locations</title>
+    <title>Pita Pit - Recipe</title>
     @Html.Partial("~/Views/Shared/Header.html")
 </head>
 
@@ -24,27 +24,36 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Content Row -->
-
-                    <h1 class="h3 mb-2 text-gray-800">Location</h1>
-
+                    <h1 class="h3 mb-2 text-gray-800">Recipe</h1>
                     <div class="mb-4">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-9">
                                 <div class="card o-hidden border-0 shadow-lg my-0">
                                     <div class="card-body p-0">
                                         <!-- Nested Row within Card Body -->
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="p-lg-5">
-                                                    <form class="form-inline">
-                                                        <div class="form-group mr-2">
-                                                            <label for="groupName">Name</label> &nbsp;&nbsp;
-                                                            <input type="text" class="form-control" id="groupName" placeholder="Ex. Chiller">
+                                                    <form>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="recipeName">Name</label>
+                                                                <input type="text" class="form-control" id="recipeName" placeholder="Ex. Chicken bacon crunch">
+                                                            </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">ADD</button> &nbsp;&nbsp;
-                                                        <button type="reset" class="btn btn-danger">CANCEL</button>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="recipePackaging">Packaging</label>
+                                                                <select class="form-control recipePackagingSelectPicker">
+                                                                    <option>SM Wrap</option>
+                                                                    <option>LG Wrap</option>
+                                                                    <option>SM Bowl</option>
+                                                                    <option>LG Bowl</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">ADD</button>
+                                                        <button type="button" class="btn btn-danger">CANCEL</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -52,36 +61,63 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-lg-3">
+                                <div class="card h-100 o-hidden mb-2 border-0 shadow-lg my-0">
+                                    <div class="card-body p-0">
+                                        <!-- Nested Row within Card Body -->
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="p-lg-5">
+                                                    <form>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="igredientList">Ingredient List</label>
+                                                                <select class="selectpicker" multiple>
+                                                                    <option>Avocado</option>
+                                                                    <option>Latus</option>
+                                                                    <option>Onions</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Location List</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Recipe List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Name</th>
+                                            <th>Packaging</th>
+                                            <th>Ingredient List</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>#</th>
                                             <th>Name</th>
+                                            <th>Packaging</th>
+                                            <th>Ingredient List</th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <td>9854</td>
-                                            <td>Chiller</td>
+                                            <td>Chiken bacon crunch</td>
+                                            <td>SM Bowl</td>
+                                            <td>Latus, Tomatoes, Onion, Pamasan cheese, ceaser, ...</td>
                                             <td>
                                                 <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
@@ -92,8 +128,9 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>8547</td>
-                                            <td>Fridge</td>
+                                            <td>Maxicano</td>
+                                            <td>LG Wrap</td>
+                                            <td>Latus, Jelapeono, Sour Cream, Hot Chilli, ...</td>
                                             <td>
                                                 <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
@@ -112,6 +149,7 @@
                     </div>
 
                     <!-- /.container-fluid -->
+
                 </div>
                 <!-- End of Main Content -->
                 <!-- Footer -->
@@ -131,8 +169,11 @@
 
         @Html.Partial("~/Views/Shared/FooterJS.html")
 
+
+
 </body>
 
 </html>
-
-
+<script type="text/javascript">
+      $('select').selectpicker();
+</script>
