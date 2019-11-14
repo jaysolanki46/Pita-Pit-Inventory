@@ -27,6 +27,5 @@ C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Vie
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Product\Locations.g.cshtml.cs
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Product\NewProduct.g.cshtml.cs
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Supplier\NewSupplier.g.cshtml.cs
-C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Recipe\ViewRecipes.g.cshtml.cs
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Recipe\Ingredient.g.cshtml.cs
 C:\Users\jayso\source\repos\Pita Pit Inventory\obj\Debug\netcoreapp2.1\Razor\Views\Recipe\Recipe.g.cshtml.cs
