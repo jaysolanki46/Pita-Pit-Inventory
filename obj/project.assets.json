@@ -12538,9 +12538,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jayso\\source\\repos\\Pita Pit Inventory\\Pita Pit Inventory.csproj",
-      "projectName": "Pita Pit Inventory",
-      "projectPath": "C:\\Users\\jayso\\source\\repos\\Pita Pit Inventory\\Pita Pit Inventory.csproj",
+      "projectUniqueName": "C:\\Users\\jayso\\source\\repos\\Pita Pit Inventory\\Pita_Pit_Inventory.csproj",
+      "projectName": "Pita_Pit_Inventory",
+      "projectPath": "C:\\Users\\jayso\\source\\repos\\Pita Pit Inventory\\Pita_Pit_Inventory.csproj",
       "packagesPath": "C:\\Users\\jayso\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jayso\\source\\repos\\Pita Pit Inventory\\obj\\",
       "projectStyle": "PackageReference",
