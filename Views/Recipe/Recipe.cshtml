@@ -3,7 +3,7 @@
 
 <head>
     <title>Pita Pit - Recipe</title>
-    @Html.Partial("~/Views/Shared/Header.html")
+  @Html.Partial("~/Views/Shared/Header.html")
 </head>
 
 <body id="page-top">
@@ -11,7 +11,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        @Html.Partial("~/Views/Shared/Nav.html")
+      @Html.Partial("~/Views/Shared/Nav.html")
 
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -20,7 +20,7 @@
             <!-- Main Content -->
             <div id="content">
                 <!-- Topbar -->
-                @Html.Partial("~/Views/Shared/StatusBar.html")
+              @Html.Partial("~/Views/Shared/StatusBar.html")
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -33,7 +33,8 @@
                                         <!-- Nested Row within Card Body -->
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <div class="p-lg-5">
+                                                <div class="p-lg-3">
+                                                    <b><label>Recipe</label></b><hr />
                                                     <form>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
@@ -43,13 +44,8 @@
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
-                                                                <label for="recipePackaging">Packaging</label>
-                                                                <select class="form-control recipePackagingSelectPicker">
-                                                                    <option>SM Wrap</option>
-                                                                    <option>LG Wrap</option>
-                                                                    <option>SM Bowl</option>
-                                                                    <option>LG Bowl</option>
-                                                                </select>
+                                                                <label for="recipePrice">Price</label>
+                                                                <input type="text" class="form-control" id="recipePrice" placeholder="Ex. 14.90">
                                                             </div>
                                                         </div>
                                                         <button type="submit" class="btn btn-primary">ADD</button>
@@ -67,7 +63,8 @@
                                         <!-- Nested Row within Card Body -->
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <div class="p-lg-5">
+                                                <div class="p-lg-3">
+                                                    <b><label>Ingredients</label></b><hr />
                                                     <form>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
@@ -100,7 +97,7 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Packaging</th>
+                                            <th>Price</th>
                                             <th>Ingredient List</th>
                                             <th></th>
                                         </tr>
@@ -153,7 +150,7 @@
                 </div>
                 <!-- End of Main Content -->
                 <!-- Footer -->
-                @Html.Partial("~/Views/Shared/footer.html")
+              @Html.Partial("~/Views/Shared/footer.html")
                 <!-- End of Footer -->
 
             </div>
@@ -167,9 +164,9 @@
         </a>
 
 
-        @Html.Partial("~/Views/Shared/FooterJS.html")
+      @Html.Partial("~/Views/Shared/FooterJS.html")
 
-
+    </div>
 
 </body>
 

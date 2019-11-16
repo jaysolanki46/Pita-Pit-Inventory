@@ -24,5 +24,17 @@ namespace Pita_Pit_Inventory.Controllers
         {
             return View("ViewSuppliers");
         }
+
+        [HttpPost]
+        public IActionResult Add(string supplierCode, string supplierName, string supplierAddress, string supplierEmail, string productGroup, string supplierNote)
+        {
+            string code = supplierCode;
+            string name = supplierName;
+            string address = supplierAddress;
+            string mail = supplierEmail;
+            string note = supplierNote;
+
+            return RedirectToAction("New", "Supplier", new { status = "Success" });
+        }
     }
 }
