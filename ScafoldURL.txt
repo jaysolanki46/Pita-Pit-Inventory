@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext -Connection "Data Source=localhost;Initial Catalog=Pita_Pit_Inventory_App;Integrated Security=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context "DbContextName" -DataAnnotations -Force

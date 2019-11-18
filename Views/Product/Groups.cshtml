@@ -1,4 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@model dynamic
+@{ 
+    string GroupId = "";
+    string GroupName = "";
+
+    if(Model.Group != null)
+    {
+        foreach(Pita_Pit_Inventory.Models.Groups item in Model.Group)
+        {
+            GroupId = item.GroupId.ToString();
+            GroupName = item.GroupName;
+        }
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,92 +39,89 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <form name="group-form" id="group-form" action="Groups/AddGroup" method="post">
+                        <!-- Content Row -->
 
-                    <!-- Content Row -->
+                        <h1 class="h3 mb-2 text-gray-800">Group</h1>
 
-                    <h1 class="h3 mb-2 text-gray-800">Group</h1>
-
-                    <div class="mb-4">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card o-hidden border-0 shadow-lg my-0">
-                                    <div class="card-body p-0">
-                                        <!-- Nested Row within Card Body -->
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="p-lg-3">
-                                                    <b><label>Group</label></b><hr />
-                                                    <form class="form-inline">
+                        <div class="mb-4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card o-hidden border-0 shadow-lg my-0">
+                                        <div class="card-body p-0">
+                                            <!-- Nested Row within Card Body -->
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="p-lg-3">
+                                                        <b><label>Group</label></b><hr />
                                                         <div class="form-group mr-2">
                                                             <label for="groupName">Name</label> &nbsp;&nbsp;
-                                                            <input type="text" class="form-control" id="groupName" placeholder="Ex. Beverages">
+                                                            <input type="text" class="form-control" id="groupName" name="groupName" placeholder="Ex. Beverages"
+                                                                   value="@GroupName">
+
                                                         </div>
+
                                                         <button type="submit" class="btn btn-primary">ADD</button> &nbsp;&nbsp;
                                                         <button type="reset" class="btn btn-danger">CANCEL</button>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                            
                         </div>
-                    </div>
+                    </form>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Group List</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>9564</td>
-                                            <td>Beverages</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-danger float-sm-right btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>6521</td>
-                                            <td>Veggies</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-danger float-sm-right btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                    @if (Model.Groups != null)
+                    {
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Group List</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            @foreach (var item in Model.Groups)
+                                            {
+                                                var id = @item.GroupId;
+                                                <tr>
+                                                    <td>@id</td>
+                                                    <td>@item.GroupName</td>
+                                                    <td>
+                                                        <a href="Groups/Group/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+
 
                     <!-- /.container-fluid -->
                 </div>
@@ -135,4 +147,71 @@
 
 </html>
 
+<script>
+    function Confirm(deleteId) {
+        Swal.fire({
+            title: 'Delete group?',
+            text: "You won't be able to recover this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it'
+        }).then((result) => {
+            if (result.value) {
+                $.get("/Product/Groups/DeleteGroup/" + deleteId, function (data, status) {
+                        swal({
+                            title: "Deleted!",
+                            text: "Group has been deleted.",
+                            type: "success"
+                        }).then(function () {
+                            location.reload();
+                        });
+                    });
+            }
+        });
+    }
+</script>
+
+@if (ViewData["Status"] != null)
+{
+    <script>
+        var status = "@ViewData["Status"]";
+
+        window.onload = function ()
+        {
+            ShowMessage();
+        };
+
+        function ShowMessage()
+        {
+            if (status == "Success")
+            {
+                swal({
+                    title: "Good job!",
+                    text: "Group has been added",
+                    type: "success",
+                    confirmButtonClass: "btn btn-success mt-2"
+                });
+            }
+            else if (status == "Error") {
+                swal({
+                    title: "Whoops!",
+                    text: "An error has occurred",
+                    type: "error",
+                    confirmButtonClass: "btn btn-danger btn-sm",
+                    footer: "<a>Please try Again</a>"
+                });
+            }
+            else {
+                swal({
+                    title: "Uh oh!",
+                    text: "Something happened?",
+                    type: "warning",
+                    confirmButtonClass: "btn btn-warning btn-sm"
+                });
+            }
+        }
+    </script>
+}
 
