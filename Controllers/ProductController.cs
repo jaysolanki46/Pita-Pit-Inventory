@@ -19,10 +19,61 @@ namespace Pita_Pit_Inventory.Controllers
             return View();
         }
 
+        #region Product
         [HttpGet("Product/New")]
-        public IActionResult NewProductPage()
+        public IActionResult NewProductPage(string status)
         {
-            return View("NewProduct");
+            dynamic model = new ExpandoObject();
+            var groups = _context.Groups.ToList();
+            var locations = _context.Locations.ToList();
+
+            model.Groups = groups;
+            model.Locations = locations;
+
+            ViewData["Status"] = status;
+            return View("NewProduct", model);
+        }
+
+        [HttpPost("Product/New/AddProduct")]
+        public IActionResult AddProduct(string productSKU, string productName, string productPackSize, string productQtyPack, string productQty, string productPrice, string productGST, string productGroup, string productLocation, string productIsPerishable, string productDescription)
+        {
+            string LclProductSKU = productSKU;
+            string LclProductName = productName;
+            string LclProductDescription = productDescription;
+            decimal LclProductPrice = decimal.Parse(productPrice);
+            decimal LclProductGST = decimal.Parse(productGST);
+            string LclProductPackSize = productPackSize;
+            int LclProductQtyInPack = int.Parse(productQtyPack);
+            int LclProductGroupId = int.Parse(productGroup);
+            int LclProductLocationId = int.Parse(productLocation);
+            bool LclProductIsPerishable = false;
+
+            if (productIsPerishable != null && productIsPerishable.Equals("on"))
+                LclProductIsPerishable = true;
+
+            Groups group = _context.Groups.Where(x => x.GroupId == LclProductGroupId).FirstOrDefault<Groups>();
+            Locations location = _context.Locations.Where(x => x.LocationId == LclProductLocationId).FirstOrDefault<Locations>();
+
+            Products product = new Products()
+            {
+                ProductSku = LclProductSKU,
+                ProductName = LclProductName,
+                ProductDescription = LclProductDescription,
+                ProductPrice = LclProductPrice,
+                ProductGts = LclProductGST,
+                ProductPackSize = LclProductPackSize,
+                ProductQtyInPack = LclProductQtyInPack,
+                ProductGroupId = LclProductGroupId,
+                ProductLocationId = LclProductLocationId,
+                ProductIsPerishable = LclProductIsPerishable,
+                ProductGroup = group,
+                //Pro = location                 
+            };
+
+            _context.Products.Add(product);
+            _context.SaveChanges();
+
+            return RedirectToAction("NewProductPage", "Product", new { status = "Success" });
         }
 
         [HttpGet("Product/View")]
@@ -30,7 +81,9 @@ namespace Pita_Pit_Inventory.Controllers
         {
             return View("ViewProducts");
         }
+        #endregion
 
+        #region Product/Groups
         [HttpGet("Product/Groups")]
         public IActionResult Groups(string status)
         {
@@ -82,12 +135,20 @@ namespace Pita_Pit_Inventory.Controllers
 
             return RedirectToActionPermanent("Groups", "Product");
         }
+        #endregion
 
+        #region product/Locations
         [HttpGet("Product/Locations")]
         public IActionResult Locations(string status)
         {
+            dynamic model = new ExpandoObject();
+            var locations = _context.Locations.ToList();
+
+            model.Location = null;
+            model.Locations = locations;
+
             ViewData["Status"] = status;
-            return View("Locations");
+            return View("Locations", model);
         }
 
         [HttpPost("Product/Locations/AddLocation")]
@@ -105,5 +166,29 @@ namespace Pita_Pit_Inventory.Controllers
            
             return RedirectToAction("Locations", "Product", new { status = "Success" });
         }
+
+        [HttpGet("Product/Locations/Location/{id}")]
+        public IActionResult Location(int id)
+        {
+            var location = _context.Locations.Where(x => x.LocationId == id);
+            var locations = _context.Locations.ToList();
+
+            dynamic model = new ExpandoObject();
+            model.Location = location;
+            model.Locations = locations;
+
+            return View("Locations", model);
+        }
+
+        [HttpGet("Product/Locations/DeleteLocation/{id}")]
+        public IActionResult DeleteLocation(int id)
+        {
+            Locations location = _context.Locations.Where(x => x.LocationId == id).FirstOrDefault<Locations>();
+            _context.Locations.Remove(location);
+            _context.SaveChanges();
+
+            return RedirectToActionPermanent("Locations", "Product");
+        }
+        #endregion
     }
 }

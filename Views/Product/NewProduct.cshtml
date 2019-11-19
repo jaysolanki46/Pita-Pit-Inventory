@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@model dynamic
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Pita Pit - Product</title>
-    @Html.Partial("~/Views/Shared/Header.html")  
+    @Html.Partial("~/Views/Shared/Header.html")
 </head>
 
 <body id="page-top">
@@ -24,7 +25,7 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <form id="product-form" action="Add" method="post">
+                    <form id="product-form" action="New/AddProduct" method="post">
                         <h1 class="h3 mb-2 text-gray-800">Product</h1>
                         <div class="mb-4">
                             <div class="row">
@@ -36,20 +37,20 @@
                                                 <div class="col-lg-12">
                                                     <div class="p-lg-3">
                                                         <b><label>Product</label></b><hr />
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="productID">ID</label>
-                                                                    <input type="text" class="form-control" id="productID" placeholder="####" disabled="disabled">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="productSKU">SKU</label>
-                                                                    <input type="text" class="form-control" id="productSKU" placeholder="Ex. UGG-BB-PUR-06">
-                                                                </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productID">ID</label>
+                                                                <input type="text" class="form-control" id="productID" placeholder="####" disabled="disabled">
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="productName">Name</label>
-                                                                <input type="text" class="form-control" id="productName" placeholder="Ex. Banana">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productSKU">SKU</label>
+                                                                <input type="text" class="form-control" id="productSKU" name="productSKU" placeholder="Ex. UGG-BB-PUR-06">
                                                             </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="productName">Name</label>
+                                                            <input type="text" class="form-control" id="productName" name="productName" placeholder="Ex. Banana">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -63,24 +64,24 @@
                                                 <div class="col-lg-12">
                                                     <div class="p-lg-3">
                                                         <b><label>Packing</label></b><hr />
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-4">
-                                                                    <label for="productPackSize">Pack Size</label>
-                                                                    <select class="form-control productPackSizeSelectPicker">
-                                                                        <option>Box</option>
-                                                                        <option>Packet</option>
-                                                                        <option>Piece</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group col-md-4">
-                                                                    <label for="productQtyPack">Qty In Pack</label>
-                                                                    <input type="number" class="form-control" id="productQtyPack" placeholder="Ex. 17">
-                                                                </div>
-                                                                <div class="form-group col-md-4">
-                                                                    <label for="productQty">Qty</label>
-                                                                    <input type="number" class="form-control" id="productQty" placeholder="Ex. 17">
-                                                                </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label for="productPackSize">Pack Size</label>
+                                                                <select id="productPackSize" name="productPackSize" class="form-control productPackSizeSelectPicker">
+                                                                    <option value="Box">Box</option>
+                                                                    <option value="Packet">Packet</option>
+                                                                    <option value="Piece">Piece</option>
+                                                                </select>
                                                             </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="productQtyPack">Qty In Pack</label>
+                                                                <input type="number" class="form-control" id="productQtyPack" name="productQtyPack" placeholder="Ex. 17">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="productQty">Qty</label>
+                                                                <input type="number" class="form-control" id="productQty" name="productQty" placeholder="Ex. 17">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -95,47 +96,55 @@
                                                 <div class="col-lg-12">
                                                     <div class="p-lg-3">
                                                         <b><label>Pricing</label></b><hr />
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="productPrice">Price</label>
-                                                                    <input type="text" class="form-control" id="productPrice" placeholder="Ex. 17">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="productGST">GST</label>
-                                                                    <input type="text" class="form-control" id="productGST" placeholder="Ex. 17">
-                                                                </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productPrice">Price</label>
+                                                                <input type="text" class="form-control" id="productPrice" name="productPrice" placeholder="Ex. 17">
                                                             </div>
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="productGroup">Group</label>
-                                                                    <select class="form-control productGroupSelectPicker">
-                                                                        <option>Beverages</option>
-                                                                        <option>Sauces</option>
-                                                                        <option>Veggies</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group col-md-4">
-                                                                    <label for="productLocation">Location</label>
-                                                                    <select class="form-control productLocationSelectPicker">
-                                                                        <option>Chiller</option>
-                                                                        <option>Fridge</option>
-                                                                        <option>Normal</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group col-md-1">
-                                                                    <label for="productIsPerishable">Perishable?</label></br>
-                                                                    <label class="switch">
-                                                                        <input type="checkbox" id="productIsRecipe" checked>
-                                                                        <span class="slider round"></span>
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label for="productDescription">Description</label>
-                                                                    <textarea class="form-control" id="productDescription" rows="3" placeholder="Ex. Banana should only used for the smoothies !! ......"></textarea>
-                                                                </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productGST">GST</label>
+                                                                <input type="text" class="form-control" id="productGST" name="productGST" placeholder="Ex. 17">
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">ADD</button>
-                                                            <button type="button" class="btn btn-danger">CANCEL</button>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="productGroup">Group</label>
+                                                                <select id="productGroup" name="productGroup" class="form-control productGroupSelectPicker">
+                                                                    @if (Model.Groups != null)
+                                                                    {
+                                                                        @foreach (var item in Model.Groups)
+                                                                        {
+                                                                            <option value="@item.GroupId">@item.GroupName</option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="productLocation">Location</label>
+                                                                <select id="productLocation" name="productLocation" class="form-control productLocationSelectPicker">
+                                                                    @if (Model.Locations != null)
+                                                                    {
+                                                                        @foreach (var item in Model.Locations)
+                                                                        {
+                                                                            <option value="@item.LocationId">@item.LocationName</option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-1">
+                                                                <label for="productIsPerishable">Perishable?</label></br>
+                                                                <label class="switch">
+                                                                    <input type="checkbox" id="productIsPerishable" name="productIsPerishable" checked>
+                                                                    <span class="slider round"></span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group col-md-12">
+                                                                <label for="productDescription">Description</label>
+                                                                <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Ex. Banana should only used for the smoothies !! ......"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">ADD</button>
+                                                        <button type="button" class="btn btn-danger">CANCEL</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -150,22 +159,18 @@
                                                 <div class="col-lg-12">
                                                     <div class="p-lg-3">
                                                         <b><label>Supplier</label></b><hr />
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-12">
-                                                                    <label for="supplierSKU">Barcode / SKU</label>
-                                                                    <input type="text" class="form-control" id="productSKU" placeholder="Ex. UGG-BB-PUR-06" />
-                                                                </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="supplierSKU">Barcode / SKU</label>
+                                                                <input type="text" class="form-control" id="supplierSKU" name="supplierSKU" placeholder="######" disabled="disabled" />
                                                             </div>
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-12">
-                                                                    <label for="supplierName">Supplier</label>
-                                                                    <select class="form-control">
-                                                                        <option>Paul Walker</option>
-                                                                        <option>Baljeet Singh</option>
-                                                                        <option>Rohan Patel</option>
-                                                                    </select>
-                                                                </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="supplierName">Supplier</label>
+                                                                <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Not Yet!" disabled="disabled" />
                                                             </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,7 +180,7 @@
                             </div>
                         </div>
                     </form>
-                        <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
 
                 </div>
                 <!-- End of Main Content -->
@@ -199,9 +204,45 @@
 </body>
 
 </html>
-<script type="text/javascript">
-    $('select').productGroupSelectPicker();
-    $('select').productLocationSelectPicker();
-    $('select').productPackSizeSelectPicker();
-</script>
 
+@if (ViewData["Status"] != null)
+{
+    <script>
+        var status = "@ViewData["Status"]";
+
+        window.onload = function ()
+        {
+            ShowMessage();
+        };
+
+        function ShowMessage()
+        {
+            if (status == "Success")
+            {
+                swal({
+                    title: "Good job!",
+                    text: "Group has been added",
+                    type: "success",
+                    confirmButtonClass: "btn btn-success mt-2"
+                });
+            }
+            else if (status == "Error") {
+                swal({
+                    title: "Whoops!",
+                    text: "An error has occurred",
+                    type: "error",
+                    confirmButtonClass: "btn btn-danger btn-sm",
+                    footer: "<a>Please try Again</a>"
+                });
+            }
+            else {
+                swal({
+                    title: "Uh oh!",
+                    text: "Something happened?",
+                    type: "warning",
+                    confirmButtonClass: "btn btn-warning btn-sm"
+                });
+            }
+        }
+    </script>
+}

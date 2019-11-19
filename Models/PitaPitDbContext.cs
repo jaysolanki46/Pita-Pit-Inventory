@@ -18,7 +18,6 @@ namespace Pita_Pit_Inventory.Models
         public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<Ingredients> Ingredients { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }
-        public virtual DbSet<ProductLocations> ProductLocations { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<ProductSupplier> ProductSupplier { get; set; }
         public virtual DbSet<RecipeIngredients> RecipeIngredients { get; set; }
@@ -55,10 +54,7 @@ namespace Pita_Pit_Inventory.Models
                 entity.Property(e => e.LocationName).IsUnicode(false);
             });
 
-            modelBuilder.Entity<ProductLocations>(entity =>
-            {
-                entity.Property(e => e.ProductLocationName).IsUnicode(false);
-            });
+            
 
             modelBuilder.Entity<Products>(entity =>
             {
@@ -75,10 +71,7 @@ namespace Pita_Pit_Inventory.Models
                     .HasForeignKey(d => d.ProductGroupId)
                     .HasConstraintName("FK_Group");
 
-                entity.HasOne(d => d.ProductLocation)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.ProductLocationId)
-                    .HasConstraintName("FK_Product_Location");
+                
             });
 
             modelBuilder.Entity<ProductSupplier>(entity =>

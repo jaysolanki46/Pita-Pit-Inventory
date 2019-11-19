@@ -55,14 +55,14 @@
                                                     <div class="p-lg-3">
                                                         <b><label>Group</label></b><hr />
                                                         <div class="form-group mr-2">
+                                                            <input type="hidden" id="groupId" name="groupId" value="@GroupId">
                                                             <label for="groupName">Name</label> &nbsp;&nbsp;
                                                             <input type="text" class="form-control" id="groupName" name="groupName" placeholder="Ex. Beverages"
                                                                    value="@GroupName">
-
                                                         </div>
 
                                                         <button type="submit" class="btn btn-primary">ADD</button> &nbsp;&nbsp;
-                                                        <button type="reset" class="btn btn-danger">CANCEL</button>
+                                                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Groups", "Product")'" >CANCEL</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -75,7 +75,7 @@
                     </form>
 
                     <!-- DataTales Example -->
-                    @if (Model.Groups != null)
+                    @if (Model.Groups != null && Model.Group == null)
                     {
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
