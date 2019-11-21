@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model dynamic
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -39,49 +41,44 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Code</th>
+                                            <th>SKU</th>
                                             <th>Name</th>
-                                            <th>Product List</th>
+                                            <th>Email</th>
+                                            <th>Note</th>
+                                            <th>Products</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-
-                                            <th>Code</th>
+                                            <th>SKU</th>
                                             <th>Name</th>
-                                            <th>Product List</th>
+                                            <th>Email</th>
+                                            <th>Note</th>
+                                            <th>Products</th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        @foreach (var item in Model.Suppliers)
+                                        {
+                                            var id = item.Id;
                                         <tr>
-                                            <td>02145</td>
-                                            <td>John Tailor</td>
-                                            <td>Chicken, Coc, Mango Juice...</td>
+                                            <td>@item.SKU</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.Note</td>
+                                            <td>@item.ProductList</td>
                                             <td>
-                                                <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                <a href="View/EditSupplier/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger float-sm-right btn-circle btn-sm">
+                                                <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>9512</td>
-                                            <td>Manish Manhotra</td>
-                                            <td>Latus, Tomatoes, Banana...</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="#" class="btn btn-danger float-sm-right btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -106,7 +103,7 @@
         </a>
     </div>
 
-        @Html.Partial("~/Views/Shared/FooterJS.html")
+    @Html.Partial("~/Views/Shared/FooterJS.html")
 
 </body>
 

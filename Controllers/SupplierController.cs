@@ -1,40 +1,109 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Pita_Pit_Inventory.Models;
+using Pita_Pit_Inventory.Models.ViewModels;
 
 namespace Pita_Pit_Inventory.Controllers
 {
     public class SupplierController : Controller
     {
+        private PitaPitDbContext _context;
+
+        public SupplierController()
+        {
+            _context = new PitaPitDbContext();
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpGet("Supplier/New")]
-        public IActionResult AddSupplierPage()
+        public IActionResult NewSupplierPage(string status)
         {
-            return View("NewSupplier");
+            dynamic model = new ExpandoObject();
+            var products = _context.Products.ToList();
+
+            model.Products = products;
+
+            ViewData["Status"] = status;
+            
+            return View("NewSupplier", model);
         }
 
         [HttpGet("Supplier/View")]
         public IActionResult ViewSuppliersPage()
         {
-            return View("ViewSuppliers");
+            dynamic model = new ExpandoObject();
+
+            var list = (from s in _context.Suppliers
+                             join ps in _context.ProductSupplier on s.SupplierId equals ps.SupplierId
+                             join pd in _context.Products on ps.ProductId equals pd.ProductId
+                             select new 
+                             {
+                                 Id = s.SupplierId,
+                                 Name = s.SupplierName,
+                                 Email = s.SupplierEmail,
+                                 SKU = s.SupplierSku,
+                                 Note = s.SupplierNote,
+                                 ProductList = pd.ProductName
+                             }).ToList();
+
+            var suppliers = list.GroupBy(x => new { x.Id, x.Name, x.SKU, x.Email, x.Note }).Select(
+                            item => new SuppliersViewModel
+                            {
+                                Id = item.Key.Id,
+                                Name = item.Key.Name,
+                                Email = item.Key.Email,
+                                SKU = item.Key.SKU,
+                                Note = item.Key.Note,
+                                ProductList = string.Join(",", item.Select(c => c.ProductList))
+                            });
+
+
+            model.Suppliers = suppliers;
+
+            return View("ViewSuppliers", model);
         }
 
-        [HttpPost]
-        public IActionResult Add(string supplierCode, string supplierName, string supplierAddress, string supplierEmail, string productGroup, string supplierNote)
+        [HttpPost("Supplier/New/AddSupplier")]
+        public IActionResult AddSupplier(string supplierSKU, string supplierName, string supplierAddress, string supplierEmail, string[] productList, string supplierNote)
         {
-            string code = supplierCode;
-            string name = supplierName;
-            string address = supplierAddress;
-            string mail = supplierEmail;
-            string note = supplierNote;
+            int lastInsertedId = 0;
 
-            return RedirectToAction("New", "Supplier", new { status = "Success" });
+            // Supplier entry
+            Suppliers supplier = new Suppliers()
+            {
+                SupplierSku = supplierSKU,
+                SupplierName = supplierName,
+                SupplierAddress = supplierAddress,
+                SupplierEmail = supplierEmail,
+                SupplierNote = supplierNote
+            };
+
+            _context.Suppliers.Add(supplier);
+            _context.SaveChanges();
+
+            lastInsertedId = supplier.SupplierId;
+
+            // Product_Supplier entry (one to many)
+            for (int i = 0; i < productList.Length; i++)
+            {
+                ProductSupplier productSupplier = new ProductSupplier()
+                {
+                    ProductId = int.Parse(productList[i]),
+                    SupplierId = lastInsertedId
+                };
+
+                _context.ProductSupplier.Add(productSupplier);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("NewSupplierPage", "Supplier", new { status = "Success" });
         }
     }
 }
