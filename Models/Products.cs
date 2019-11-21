@@ -23,12 +23,14 @@ namespace Pita_Pit_Inventory.Models
         public string ProductDescription { get; set; }
         [Column("Product_Price")]
         public decimal? ProductPrice { get; set; }
-        [Column("Product_GTS")]
-        public decimal? ProductGts { get; set; }
+        [Column("Product_GST")]
+        public decimal? ProductGst { get; set; }
         [Column("Product_Pack_Size")]
         public string ProductPackSize { get; set; }
         [Column("Product_Qty_In_Pack")]
         public int? ProductQtyInPack { get; set; }
+        [Column("Product_Total_Qty")]
+        public int? ProductTotalQty { get; set; }
         [Column("Product_Group_Id")]
         public int? ProductGroupId { get; set; }
         [Column("Product_Location_Id")]

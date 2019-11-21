@@ -36,7 +36,7 @@ namespace Pita_Pit_Inventory.Controllers
         }
 
         [HttpPost("Product/New/AddProduct")]
-        public IActionResult AddProduct(string productSKU, string productName, string productPackSize, string productQtyPack, string productQty, string productPrice, string productGST, string productGroup, string productLocation, string productIsPerishable, string productDescription)
+        public IActionResult AddProduct(string productSKU, string productName, string productPackSize, string productQtyPack, string productTotalQty, string productPrice, string productGST, string productGroup, string productLocation, string productIsPerishable, string productDescription)
         {
             string LclProductSKU = productSKU;
             string LclProductName = productName;
@@ -45,6 +45,7 @@ namespace Pita_Pit_Inventory.Controllers
             decimal LclProductGST = decimal.Parse(productGST);
             string LclProductPackSize = productPackSize;
             int LclProductQtyInPack = int.Parse(productQtyPack);
+            int LclProductTotalQty = int.Parse(productTotalQty);
             int LclProductGroupId = int.Parse(productGroup);
             int LclProductLocationId = int.Parse(productLocation);
             bool LclProductIsPerishable = false;
@@ -61,9 +62,10 @@ namespace Pita_Pit_Inventory.Controllers
                 ProductName = LclProductName,
                 ProductDescription = LclProductDescription,
                 ProductPrice = LclProductPrice,
-                ProductGts = LclProductGST,
+                ProductGst = LclProductGST,
                 ProductPackSize = LclProductPackSize,
                 ProductQtyInPack = LclProductQtyInPack,
+                ProductTotalQty = LclProductTotalQty,
                 ProductGroupId = LclProductGroupId,
                 ProductLocationId = LclProductLocationId,
                 ProductIsPerishable = LclProductIsPerishable
