@@ -39,6 +39,9 @@ namespace Pita_Pit_Inventory.Models
         [ForeignKey("ProductGroupId")]
         [InverseProperty("Products")]
         public Groups ProductGroup { get; set; }
+        [ForeignKey("ProductLocationId")]
+        [InverseProperty("Products")]
+        public Locations ProductLocation { get; set; }
         [InverseProperty("Product")]
         public ICollection<ProductSupplier> ProductSupplier { get; set; }
     }

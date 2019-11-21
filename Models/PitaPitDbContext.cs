@@ -54,8 +54,6 @@ namespace Pita_Pit_Inventory.Models
                 entity.Property(e => e.LocationName).IsUnicode(false);
             });
 
-            
-
             modelBuilder.Entity<Products>(entity =>
             {
                 entity.Property(e => e.ProductDescription).IsUnicode(false);
@@ -71,7 +69,10 @@ namespace Pita_Pit_Inventory.Models
                     .HasForeignKey(d => d.ProductGroupId)
                     .HasConstraintName("FK_Group");
 
-                
+                entity.HasOne(d => d.ProductLocation)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.ProductLocationId)
+                    .HasConstraintName("FK_Location");
             });
 
             modelBuilder.Entity<ProductSupplier>(entity =>

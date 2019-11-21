@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pita_Pit_Inventory.Models;
+using Pita_Pit_Inventory.Models.ViewModels;
 using System.Dynamic;
 using System.Linq;
 
@@ -65,9 +66,8 @@ namespace Pita_Pit_Inventory.Controllers
                 ProductQtyInPack = LclProductQtyInPack,
                 ProductGroupId = LclProductGroupId,
                 ProductLocationId = LclProductLocationId,
-                ProductIsPerishable = LclProductIsPerishable,
-                ProductGroup = group,
-                //Pro = location                 
+                ProductIsPerishable = LclProductIsPerishable
+                
             };
 
             _context.Products.Add(product);
@@ -77,10 +77,57 @@ namespace Pita_Pit_Inventory.Controllers
         }
 
         [HttpGet("Product/View")]
-        public IActionResult ViewProductsPage()
+        public IActionResult ViewProductsPage(string status)
         {
-            return View("ViewProducts");
+            dynamic model = new ExpandoObject();
+
+            var products = (from p in _context.Products
+                            join l in _context.Locations on p.ProductLocationId equals l.LocationId
+                            join g in _context.Groups on p.ProductGroupId equals g.GroupId
+                            select new ProductsViewModel
+                            {
+                                Id = p.ProductId,
+                                Sku = p.ProductSku,
+                                Price = p.ProductPrice,
+                                Name = p.ProductName,
+                                PackSize = p.ProductPackSize,
+                                QtyInPack = p.ProductQtyInPack,
+                                Location = l.LocationName,
+                                Group = g.GroupName,
+                                IsPerishable = p.ProductIsPerishable
+                            }).ToList();
+
+            model.Products = products;
+
+            ViewData["Status"] = status;
+            return View("ViewProducts", model);
         }
+
+        [HttpGet("Product/View/EditProduct/{id}")]
+        public IActionResult EditProduct(int id)
+        {
+            dynamic model = new ExpandoObject();
+            var groups = _context.Groups.ToList();
+            var locations = _context.Locations.ToList();
+            var product = _context.Products.Where(x => x.ProductId == id);
+
+            model.Groups = groups;
+            model.Locations = locations;
+            model.Product = product;
+
+            return View("EditProduct", model);
+        }
+
+        [HttpGet("Product/View/DeleteProduct/{id}")]
+        public IActionResult DeleteProduct(int id)
+        {
+            Products product = _context.Products.Where(x => x.ProductId == id).FirstOrDefault<Products>();
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+
+            return RedirectToActionPermanent("ViewProductsPage", "Product");
+        }
+
         #endregion
 
         #region Product/Groups

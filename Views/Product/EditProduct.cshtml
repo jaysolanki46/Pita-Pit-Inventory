@@ -1,4 +1,25 @@
 ﻿@model dynamic
+@{
+    string id = "";
+    string sku = "";
+    string name = "";
+    string description = "";
+    string price = "";
+    string gst = "";
+    string packSize = "";
+    string qtyInPack = "";
+    string groupId = "";
+    string locationId = "";
+    string isPerishable = "";
+
+    if (Model.Product != null)
+    {
+        foreach (Pita_Pit_Inventory.Models.Products item in Model.Product)
+        {
+            // assign values and then add to value attributes of html tagss
+        }
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 

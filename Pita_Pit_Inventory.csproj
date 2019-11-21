@@ -14,4 +14,10 @@
     <Folder Include="wwwroot\js\vendor\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Product\EditProduct.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
