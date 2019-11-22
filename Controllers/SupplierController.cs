@@ -65,10 +65,48 @@ namespace Pita_Pit_Inventory.Controllers
                                 ProductList = string.Join(",", item.Select(c => c.ProductList))
                             });
 
-
             model.Suppliers = suppliers;
 
             return View("ViewSuppliers", model);
+        }
+
+        [HttpGet("Supplier/View/EditSupplier/{id}")]
+        public IActionResult EditSupplier(int id)
+        {
+            dynamic model = new ExpandoObject();
+
+            var list = (from s in _context.Suppliers
+                        join ps in _context.ProductSupplier on s.SupplierId equals ps.SupplierId
+                        join pd in _context.Products on ps.ProductId equals pd.ProductId
+                        where s.SupplierId == id
+                        select new
+                        {
+                            Id = s.SupplierId,
+                            Name = s.SupplierName,
+                            Address = s.SupplierAddress,
+                            Email = s.SupplierEmail,
+                            SKU = s.SupplierSku,
+                            Note = s.SupplierNote,
+                            ProductList = pd.ProductId
+                        }).ToList();
+
+            var supplier = list.GroupBy(x => new { x.Id, x.Name, x.Address, x.SKU, x.Email, x.Note }).Select(
+                            item => new SuppliersViewModel
+                            {
+                                Id = item.Key.Id,
+                                Name = item.Key.Name,
+                                Address = item.Key.Address,
+                                Email = item.Key.Email,
+                                SKU = item.Key.SKU,
+                                Note = item.Key.Note,
+                                ProductList = string.Join(",", item.Select(c => c.ProductList))
+                            });
+
+            var products = _context.Products.ToList();
+            model.Products = products;
+            model.Supplier = supplier;
+
+            return View("NewSupplier", model);
         }
 
         [HttpPost("Supplier/New/AddSupplier")]

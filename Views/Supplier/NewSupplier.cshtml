@@ -1,4 +1,28 @@
 ﻿@model dynamic
+@using System.Linq;
+@{
+    int id = 0;
+    string sku = "";
+    string name = "";
+    string address = "";
+    string email = "";
+    string note = "";
+    string productList = "";
+
+    if (Model.Supplier != null)
+    {
+        foreach (Pita_Pit_Inventory.Models.ViewModels.SuppliersViewModel item in Model.Supplier)
+        {
+            id = item.Id;
+            sku = item.SKU;
+            name = item.Name;
+            address = item.Address;
+            email = item.Email;
+            note = item.Note;
+            productList = item.ProductList;
+        }
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,29 +64,29 @@
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
                                                                 <label for="supplierId">Id</label>
-                                                                <input type="text" class="form-control" id="supplierId" name="supplierId" placeholder="#00122" disabled="disabled">
+                                                                <input type="text" class="form-control" id="supplierId" name="supplierId" placeholder="#00122" disabled="disabled" value="@id">
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="supplierSKU">SKU</label>
-                                                                <input type="text" class="form-control" id="supplierSKU" name="supplierSKU" placeholder="GG_SKU-102">
+                                                                <input type="text" class="form-control" id="supplierSKU" name="supplierSKU" placeholder="GG_SKU-102" value="@sku">
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="supplierName">Name</label>
-                                                                <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Ex. John Devis">
+                                                                <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Ex. John Devis" value="@name">
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
                                                                 <label for="supplierAddress">Address</label>
-                                                                <textarea class="form-control" id="supplierAddress" name="supplierAddress" rows="3" placeholder="Ex. 1/17 Plenty avenue, Albany, Auckland 2150"></textarea>
+                                                                <textarea class="form-control" id="supplierAddress" name="supplierAddress" rows="3" placeholder="Ex. 1/17 Plenty avenue, Albany, Auckland 2150">@address</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
                                                                 <label for="supplierEmail">Email</label>
-                                                                <input type="email" class="form-control" id="supplierEmail" name="supplierEmail" placeholder="Ex. info@domain.com">
+                                                                <input type="email" class="form-control" id="supplierEmail" name="supplierEmail" placeholder="Ex. info@domain.com" value="@email">
                                                             </div>
                                                         </div>
                                                         <input type="submit" class="btn btn-primary" value="ADD" />
@@ -85,21 +109,26 @@
                                                             <div class="form-group col-md-12">
                                                                 <label for="productList">Product List</label>
                                                                 <select class="selectpicker" id="productList" name="productList" multiple>
-                                                                    @if (Model.Products != null)
-                                                                    {
-                                                                        @foreach (var item in Model.Products)
+                                                                    @{
+                                                                        string[] productIds = productList.Split(',');
+
+                                                                        @if (Model.Products != null)
                                                                         {
-                                                                            <option value="@item.ProductId">@item.ProductName</option>
+                                                                            @foreach (var item in Model.Products)
+                                                                            {
+                                                                                int pos = Array.IndexOf(productIds, @item.ProductId.ToString());
+                                                                                <option value="@item.ProductId"  @(pos > -1 ? "selected" : "")>@item.ProductName</option>
+                                                                            }
                                                                         }
+
                                                                     }
                                                                 </select>
-
                                                             </div>
                                                         </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-12">
                                                                 <label for="supplierNote">Note</label>
-                                                                <textarea class="form-control" id="supplierNote" name="supplierNote" rows="3" placeholder="Ex. Available during weekdays only !"></textarea>
+                                                                <textarea class="form-control" id="supplierNote" name="supplierNote" rows="3" placeholder="Ex. Available during weekdays only !">@note</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
