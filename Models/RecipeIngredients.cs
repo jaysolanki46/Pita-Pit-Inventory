@@ -15,10 +15,6 @@ namespace Pita_Pit_Inventory.Models
         public int? RecipeId { get; set; }
         [Column("Ingredient_Item_Id")]
         public int? IngredientItemId { get; set; }
-        [Column("Ingredient_Item_Size")]
-        public string IngredientItemSize { get; set; }
-        [Column("Ingredient_Item_Qty")]
-        public int? IngredientItemQty { get; set; }
 
         [ForeignKey("IngredientItemId")]
         [InverseProperty("RecipeIngredients")]

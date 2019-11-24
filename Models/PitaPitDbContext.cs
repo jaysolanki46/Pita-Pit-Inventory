@@ -90,8 +90,6 @@ namespace Pita_Pit_Inventory.Models
 
             modelBuilder.Entity<RecipeIngredients>(entity =>
             {
-                entity.Property(e => e.IngredientItemSize).IsUnicode(false);
-
                 entity.HasOne(d => d.IngredientItem)
                     .WithMany(p => p.RecipeIngredients)
                     .HasForeignKey(d => d.IngredientItemId)
