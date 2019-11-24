@@ -1,83 +1,106 @@
 ﻿@model dynamic
-<!DOCTYPE html>
-<html lang="en">
+@{
+    int RecipeId = 0;
+    string RecipeName = "";
+    string RecipePrice = "";
+    string IngredientList = "";
 
-<head>
-    <title>Pita Pit - Recipe</title>
-    @Html.Partial("~/Views/Shared/Header.html")
-</head>
+    if (Model.Recipe != null)
+    {
+        foreach (Pita_Pit_Inventory.Models.ViewModels.RecipesViewModel item in Model.Recipe)
+        {
+            RecipeId = item.Id;
+            RecipeName = item.Name;
+            RecipePrice = item.Price;
+            IngredientList = item.IngredientList;
+        }
+    }
+}
 
-<body id="page-top">
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Sidebar -->
-        @Html.Partial("~/Views/Shared/Nav.html")
+    <head>
+        <title>Pita Pit - Recipe</title>
+        @Html.Partial("~/Views/Shared/Header.html")
+    </head>
 
-        <!-- End of Sidebar -->
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+    <body id="page-top">
 
-            <!-- Main Content -->
-            <div id="content">
-                <!-- Topbar -->
-                @Html.Partial("~/Views/Shared/StatusBar.html")
-                <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <h1 class="h3 mb-2 text-gray-800">Recipe</h1>
-                    <form id="Recipe-form" name="Recipe-form" action="Recipes/AddRecipe" method="post">
-                        <div class="mb-4">
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    <div class="card o-hidden border-0 shadow-lg my-0">
-                                        <div class="card-body p-0">
-                                            <!-- Nested Row within Card Body -->
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="p-lg-3">
-                                                        <b><label>Recipe</label></b><hr />
-                                                        <div class="form-row">
-                                                            <div class="form-group col-md-12">
-                                                                <label for="recipeName">Name</label>
-                                                                <input type="text" class="form-control" id="recipeName" name="recipeName" placeholder="Ex. Chicken bacon crunch">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            <!-- Sidebar -->
+            @Html.Partial("~/Views/Shared/Nav.html")
+
+            <!-- End of Sidebar -->
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+                    <!-- Topbar -->
+                    @Html.Partial("~/Views/Shared/StatusBar.html")
+                    <!-- End of Topbar -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+                        <h1 class="h3 mb-2 text-gray-800">Recipe</h1>
+                        <form id="Recipe-form" name="Recipe-form" action="Recipes/AddRecipe" method="post">
+                            <div class="mb-4">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="card o-hidden border-0 shadow-lg my-0">
+                                            <div class="card-body p-0">
+                                                <!-- Nested Row within Card Body -->
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="p-lg-3">
+                                                            <b><label>Recipe</label></b><hr />
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <input type="hidden" id="recipeId" name="recipeId" value="@RecipeId" />
+                                                                    <label for="recipeName">Name</label>
+                                                                    <input type="text" class="form-control" id="recipeName" name="recipeName" placeholder="Ex. Chicken bacon crunch" value="@RecipeName">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-row">
-                                                            <div class="form-group col-md-12">
-                                                                <label for="recipePrice">Price</label>
-                                                                <input type="text" class="form-control" id="recipePrice" name="recipePrice" placeholder="Ex. 14.90">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="recipePrice">Price</label>
+                                                                    <input type="text" class="form-control" id="recipePrice" name="recipePrice" placeholder="Ex. 14.90" value="@RecipePrice">
+                                                                </div>
                                                             </div>
+                                                            <button type="submit" class="btn btn-primary">ADD</button>
+                                                            <button type="button" class="btn btn-danger">CANCEL</button>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">ADD</button>
-                                                        <button type="button" class="btn btn-danger">CANCEL</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card h-100 o-hidden mb-2 border-0 shadow-lg my-0">
-                                        <div class="card-body p-0">
-                                            <!-- Nested Row within Card Body -->
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="p-lg-3">
-                                                        <b><label>Ingredients</label></b><hr />
-                                                        <div class="form-row">
-                                                            <div class="form-group col-md-12">
-                                                                <label for="ingredientList">Ingredient List</label>
-                                                                <select id="ingredientList" name="ingredientList" class="selectpicker" multiple>
-
-                                                                    @if (Model.Ingredients != null)
-                                                                    {
-                                                                        @foreach (var item in Model.Ingredients)
-                                                                        {
-                                                                            <option value="@item.IngredientItemId">@item.IngredientItemName (@item.IngredientItemQtyInSize  @item.IngredientItemSize)</option>
+                                    <div class="col-lg-3">
+                                        <div class="card h-100 o-hidden mb-2 border-0 shadow-lg my-0">
+                                            <div class="card-body p-0">
+                                                <!-- Nested Row within Card Body -->
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="p-lg-3">
+                                                            <b><label>Ingredients</label></b><hr />
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="ingredientList">Ingredient List</label>
+                                                                    <select id="ingredientList" name="ingredientList" class="selectpicker" multiple>
+                                                                        @{
+                                                                            string[] IngredientIds = IngredientList.Split(',');
+                                                                            @if (Model.Ingredients != null)
+                                                                            {
+                                                                                @foreach (var item in Model.Ingredients)
+                                                                                {
+                                                                                     int pos = Array.IndexOf(IngredientIds, @item.IngredientItemId.ToString());
+                                                                                    <option value="@item.IngredientItemId" @(pos > -1 ? "selected" : "")>@item.IngredientItemName (@item.IngredientItemQtyInSize  @item.IngredientItemSize)</option>
+                                                                                }
+                                                                            }
                                                                         }
-                                                                    }
-                                                                </select>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -87,78 +110,79 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Recipe List</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Recipe</th>
-                                            <th>Ingredients</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Recipe</th>
-                                            <th>Ingredients</th>
-                                            <th></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        @foreach (var item in Model.Recipes)
-                                            {
-                                                var id = item.Id;
+                        </form>
+                        <!-- DataTales Example -->
+                        @if (Model.Recipes != null && Model.Recipe == null)
+                        {
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Recipe List</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
                                                 <tr>
-                                                    <td>@item.Name</td>
-                                                    <td>@item.IngredientList</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info float-sm-left btn-circle btn-sm">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                    </td>
+                                                    <th>Recipe</th>
+                                                    <th>Ingredients</th>
+                                                    <th></th>
                                                 </tr>
-                                            }
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Recipe</th>
+                                                    <th>Ingredients</th>
+                                                    <th></th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                @foreach (var item in Model.Recipes)
+                                                {
+                                                    var id = item.Id;
+                                                    <tr>
+                                                        <td>@item.Name</td>
+                                                        <td>@item.IngredientList</td>
+                                                        <td>
+                                                            <a href="Recipes/EditRecipe/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
 
-                                    </tbody>
-                                </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        }
+                        <!-- /.container-fluid -->
 
-                    <!-- /.container-fluid -->
+                    </div>
+                    <!-- End of Main Content -->
+                    <!-- Footer -->
+                    @Html.Partial("~/Views/Shared/footer.html")
+                    <!-- End of Footer -->
 
                 </div>
-                <!-- End of Main Content -->
-                <!-- Footer -->
-                @Html.Partial("~/Views/Shared/footer.html")
-                <!-- End of Footer -->
+                <!-- End of Content Wrapper -->
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Page Wrapper -->
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+
+            @Html.Partial("~/Views/Shared/FooterJS.html")
 
         </div>
-        <!-- End of Page Wrapper -->
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
 
-
-        @Html.Partial("~/Views/Shared/FooterJS.html")
-
-    </div>
-
-</body>
+    </body>
 
 </html>
 <script type="text/javascript">

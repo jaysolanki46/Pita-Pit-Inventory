@@ -9,6 +9,7 @@ namespace Pita_Pit_Inventory.Models.ViewModels
     {
         public int Id { set; get; }
         public string Name { set; get; }
+        public string Price { set; get; }
         public string IngredientList { set; get; }
     }
 }

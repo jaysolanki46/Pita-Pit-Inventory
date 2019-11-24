@@ -53,6 +53,7 @@ namespace Pita_Pit_Inventory.Controllers
 
             model.Ingredients = ingredients;
             model.Recipes = recipes;
+            model.Recipe = null;
 
             ViewData["Status"] = status;
 
@@ -90,6 +91,42 @@ namespace Pita_Pit_Inventory.Controllers
             }
 
             return RedirectToAction("Recipes", "Recipe", new { status = "Success" });
+        }
+
+        [HttpGet("Recipes/EditRecipe/{id}")]
+        public IActionResult EditRecipe(int id)
+        {
+            dynamic model = new ExpandoObject();
+
+            // Initial form data
+            var ingredients = _context.Ingredients.ToList();
+
+            var list = (from r in _context.Recipes
+                        join ri in _context.RecipeIngredients on r.RecipeId equals ri.RecipeId
+                        join i in _context.Ingredients on ri.IngredientItemId equals i.IngredientItemId
+                        where r.RecipeId == id
+                        select new
+                        {
+                            Id = r.RecipeId,
+                            Name = r.RecipeName,
+                            Price = r.RecipePrice,
+                            IngredientList = i.IngredientItemId
+                        }).ToList();
+
+            var recipe = list.GroupBy(x => new { x.Id, x.Name, x.Price }).Select(
+                            item => new RecipesViewModel
+                            {
+                                Id = item.Key.Id,
+                                Name = item.Key.Name,
+                                Price = item.Key.Price,
+                                IngredientList = string.Join(",", item.Select(c => c.IngredientList))
+                            });
+
+            model.Ingredients = ingredients;
+            model.Recipe = recipe;
+            model.Recipes = null;
+
+            return View("Recipes", model);
         }
 
         [HttpGet("Recipes/DeleteRecipe/{id}")]

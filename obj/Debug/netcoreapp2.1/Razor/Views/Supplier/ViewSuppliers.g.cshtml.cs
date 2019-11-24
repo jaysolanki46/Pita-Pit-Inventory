@@ -47,7 +47,7 @@ namespace AspNetCore
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n");
             EndContext();
             BeginContext(55, 105, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b17a2bc1ce048a591b761c100c50568", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98dc20103e2a43a6821cd81474a92937", async() => {
                 BeginContext(61, 47, true);
                 WriteLiteral("\r\n    <title>Pita Pit - Suppliers</title>\r\n    ");
                 EndContext();
@@ -77,7 +77,7 @@ Write(Html.Partial("~/Views/Shared/Header.html"));
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(164, 4437, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9758c6cfdeb44a0d8eb38a355d6c357d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9e0e902117a34838b1c47b7c37cdaa96", async() => {
                 BeginContext(184, 89, true);
                 WriteLiteral("\r\n\r\n    <!-- Page Wrapper -->\r\n    <div id=\"wrapper\">\r\n        <!-- Sidebar -->\r\n        ");
                 EndContext();
@@ -114,7 +114,7 @@ Write(Html.Partial("~/Views/Shared/Header.html"));
                             ");
                 EndContext();
                 BeginContext(1047, 91, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "573317a8dea3436c83ffef9a61ed2c79", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "20c48aa0a81147c28e55c4154354aa09", async() => {
                     BeginContext(1125, 9, true);
                     WriteLiteral("+ ADD NEW");
                     EndContext();
