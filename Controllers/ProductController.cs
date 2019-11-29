@@ -10,6 +10,7 @@ namespace Pita_Pit_Inventory.Controllers
     {
         private PitaPitDbContext _context;
 
+        #region Init
         public ProductController()
         {
             _context = new PitaPitDbContext();
@@ -19,10 +20,11 @@ namespace Pita_Pit_Inventory.Controllers
         {
             return View();
         }
+        #endregion
 
         #region Product
         [HttpGet("Product/New")]
-        public IActionResult NewProductPage(string status)
+        public IActionResult NewProduct(string status)
         {
             dynamic model = new ExpandoObject();
             var groups = _context.Groups.ToList();
@@ -35,7 +37,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("NewProduct", model);
         }
 
-        [HttpPost("Product/New/AddProduct")]
+        [HttpPost("Product/New/Add")]
         public IActionResult AddProduct(string productSKU, string productName, string productPackSize, string productQtyPack, string productTotalQty, string productPrice, string productGST, string productGroup, string productLocation, string productIsPerishable, string productDescription)
         {
             string LclProductSKU = productSKU;
@@ -75,11 +77,11 @@ namespace Pita_Pit_Inventory.Controllers
             _context.Products.Add(product);
             _context.SaveChanges();
 
-            return RedirectToAction("NewProductPage", "Product", new { status = "Success" });
+            return RedirectToAction("NewProduct", "Product", new { status = "Success" });
         }
 
         [HttpGet("Product/View")]
-        public IActionResult ViewProductsPage(string status)
+        public IActionResult ViewProducts(string status)
         {
             dynamic model = new ExpandoObject();
 
@@ -105,7 +107,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("ViewProducts", model);
         }
 
-        [HttpGet("Product/View/EditProduct/{id}")]
+        [HttpGet("Product/View/Edit/{id}")]
         public IActionResult EditProduct(int id)
         {
             dynamic model = new ExpandoObject();
@@ -120,19 +122,19 @@ namespace Pita_Pit_Inventory.Controllers
             return View("EditProduct", model);
         }
 
-        [HttpGet("Product/View/DeleteProduct/{id}")]
+        [HttpGet("Product/View/Delete/{id}")]
         public IActionResult DeleteProduct(int id)
         {
             Products product = _context.Products.Where(x => x.ProductId == id).FirstOrDefault<Products>();
             _context.Products.Remove(product);
             _context.SaveChanges();
 
-            return RedirectToActionPermanent("ViewProductsPage", "Product");
+            return RedirectToActionPermanent("ViewProducts", "Product");
         }
 
-        #endregion
+        #endregion Product
 
-        #region Product/Groups
+        #region Groups
         [HttpGet("Product/Groups")]
         public IActionResult Groups(string status)
         {
@@ -146,7 +148,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Groups", model);
         }
 
-        [HttpPost("Product/Groups/AddGroup")]
+        [HttpPost("Product/Groups/Add")]
         public IActionResult AddGroup(string groupName)
         {
             string name = groupName;
@@ -162,8 +164,8 @@ namespace Pita_Pit_Inventory.Controllers
             return RedirectToAction("Groups", "Product", new { status = "Success" });
         }
 
-        [HttpGet("Product/Groups/Group/{id}")]
-        public IActionResult Group(int id)
+        [HttpGet("Product/Groups/Edit/{id}")]
+        public IActionResult EditGroup(int id)
         {
             var group = _context.Groups.Where(x => x.GroupId == id);
             var groups = _context.Groups.ToList();
@@ -175,7 +177,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Groups", model);
         }
 
-        [HttpGet("Product/Groups/DeleteGroup/{id}")]
+        [HttpGet("Product/Groups/Delete/{id}")]
         public IActionResult DeleteGroup(int id)
         {
             Groups group = _context.Groups.Where(x => x.GroupId == id).FirstOrDefault<Groups>();
@@ -186,7 +188,7 @@ namespace Pita_Pit_Inventory.Controllers
         }
         #endregion
 
-        #region product/Locations
+        #region Locations
         [HttpGet("Product/Locations")]
         public IActionResult Locations(string status)
         {
@@ -200,7 +202,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Locations", model);
         }
 
-        [HttpPost("Product/Locations/AddLocation")]
+        [HttpPost("Product/Locations/Add")]
         public IActionResult AddLocation(string locationName)
         {
             string name = locationName;
@@ -216,8 +218,8 @@ namespace Pita_Pit_Inventory.Controllers
             return RedirectToAction("Locations", "Product", new { status = "Success" });
         }
 
-        [HttpGet("Product/Locations/Location/{id}")]
-        public IActionResult Location(int id)
+        [HttpGet("Product/Locations/Edit/{id}")]
+        public IActionResult EditLocation(int id)
         {
             var location = _context.Locations.Where(x => x.LocationId == id);
             var locations = _context.Locations.ToList();
@@ -229,7 +231,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Locations", model);
         }
 
-        [HttpGet("Product/Locations/DeleteLocation/{id}")]
+        [HttpGet("Product/Locations/Delete/{id}")]
         public IActionResult DeleteLocation(int id)
         {
             Locations location = _context.Locations.Where(x => x.LocationId == id).FirstOrDefault<Locations>();

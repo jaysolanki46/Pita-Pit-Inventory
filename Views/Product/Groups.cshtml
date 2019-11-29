@@ -39,7 +39,7 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <form name="group-form" id="group-form" action="Groups/AddGroup" method="post">
+                    <form name="group-form" id="group-form" action="Groups/Add" method="post">
                         <!-- Content Row -->
 
                         <h1 class="h3 mb-2 text-gray-800">Group</h1>
@@ -106,7 +106,7 @@
                                                     <td>@id</td>
                                                     <td>@item.GroupName</td>
                                                     <td>
-                                                        <a href="Groups/Group/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                        <a href="Groups/Edit/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
@@ -159,7 +159,7 @@
             confirmButtonText: 'Yes, delete it'
         }).then((result) => {
             if (result.value) {
-                $.get("/Product/Groups/DeleteGroup/" + deleteId, function (data, status) {
+                $.get("/Product/Groups/Delete/" + deleteId, function (data, status) {
                         swal({
                             title: "Deleted!",
                             text: "Group has been deleted.",

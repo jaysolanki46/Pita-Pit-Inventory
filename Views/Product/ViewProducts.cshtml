@@ -80,7 +80,7 @@
                                                 <td>@item.Group</td>
                                                 <td>@item.IsPerishable</td>
                                                 <td>
-                                                    <a href="View/EditProduct/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                    <a href="View/Edit/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
@@ -131,7 +131,7 @@
             confirmButtonText: 'Yes, delete it'
         }).then((result) => {
             if (result.value) {
-                $.get("View/DeleteProduct/" + deleteId, function (data, status) {
+                $.get("View/Delete/" + deleteId, function (data, status) {
                     swal({
                         title: "Deleted!",
                         text: "Product has been deleted.",
