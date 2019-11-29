@@ -109,4 +109,28 @@
 
 </html>
 
-
+<script>
+    function Confirm(deleteId) {
+        Swal.fire({
+            title: 'Delete supplier?',
+            text: "You won't be able to recover this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it'
+        }).then((result) => {
+            if (result.value) {
+                $.get("View/DeleteSupplier/" + deleteId, function (data, status) {
+                    swal({
+                        title: "Deleted!",
+                        text: "Supplier has been deleted.",
+                        type: "success"
+                    }).then(function () {
+                        location.reload();
+                    });
+                });
+            }
+        });
+    }
+</script>

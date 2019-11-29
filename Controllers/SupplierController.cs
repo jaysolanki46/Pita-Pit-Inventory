@@ -30,14 +30,14 @@ namespace Pita_Pit_Inventory.Controllers
             var products = _context.Products.ToList();
 
             model.Products = products;
-
+            model.Supplier = null;
             ViewData["Status"] = status;
             
             return View("NewSupplier", model);
         }
 
         [HttpGet("Supplier/View")]
-        public IActionResult ViewSuppliersPage()
+        public IActionResult Suppliers()
         {
             dynamic model = new ExpandoObject();
 
@@ -107,6 +107,19 @@ namespace Pita_Pit_Inventory.Controllers
             model.Supplier = supplier;
 
             return View("NewSupplier", model);
+        }
+
+        [HttpGet("Supplier/View/DeleteSupplier/{id}")]
+        public IActionResult DeleteSupplier(int id)
+        {
+            _context.ProductSupplier.RemoveRange(_context.ProductSupplier.Where(x => x.SupplierId == id));
+            _context.SaveChanges();
+
+            Suppliers supplier = _context.Suppliers.Where(x => x.SupplierId == id).FirstOrDefault<Suppliers>();
+            _context.Suppliers.Remove(supplier);
+            _context.SaveChanges();
+
+            return RedirectToActionPermanent("Suppliers", "Supplier");
         }
 
         [HttpPost("Supplier/New/AddSupplier")]
