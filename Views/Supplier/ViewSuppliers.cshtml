@@ -70,7 +70,7 @@
                                             <td>@item.Note</td>
                                             <td>@item.ProductList</td>
                                             <td>
-                                                <a href="View/EditSupplier/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                <a href="View/Edit/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
@@ -121,7 +121,7 @@
             confirmButtonText: 'Yes, delete it'
         }).then((result) => {
             if (result.value) {
-                $.get("View/DeleteSupplier/" + deleteId, function (data, status) {
+                $.get("View/Delete/" + deleteId, function (data, status) {
                     swal({
                         title: "Deleted!",
                         text: "Supplier has been deleted.",

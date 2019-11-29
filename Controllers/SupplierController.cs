@@ -13,6 +13,7 @@ namespace Pita_Pit_Inventory.Controllers
     {
         private PitaPitDbContext _context;
 
+        #region Init
         public SupplierController()
         {
             _context = new PitaPitDbContext();
@@ -22,9 +23,11 @@ namespace Pita_Pit_Inventory.Controllers
         {
             return View();
         }
+        #endregion
 
+        #region Supplier
         [HttpGet("Supplier/New")]
-        public IActionResult NewSupplierPage(string status)
+        public IActionResult NewSupplier(string status)
         {
             dynamic model = new ExpandoObject();
             var products = _context.Products.ToList();
@@ -36,8 +39,43 @@ namespace Pita_Pit_Inventory.Controllers
             return View("NewSupplier", model);
         }
 
+        [HttpPost("Supplier/New/Add")]
+        public IActionResult AddSupplier(string supplierSKU, string supplierName, string supplierAddress, string supplierEmail, string[] productList, string supplierNote)
+        {
+            int lastInsertedId = 0;
+
+            // Supplier entry
+            Suppliers supplier = new Suppliers()
+            {
+                SupplierSku = supplierSKU,
+                SupplierName = supplierName,
+                SupplierAddress = supplierAddress,
+                SupplierEmail = supplierEmail,
+                SupplierNote = supplierNote
+            };
+
+            _context.Suppliers.Add(supplier);
+            _context.SaveChanges();
+
+            lastInsertedId = supplier.SupplierId;
+
+            // Product_Supplier entry (one to many)
+            for (int i = 0; i < productList.Length; i++)
+            {
+                ProductSupplier productSupplier = new ProductSupplier()
+                {
+                    ProductId = int.Parse(productList[i]),
+                    SupplierId = lastInsertedId
+                };
+
+                _context.ProductSupplier.Add(productSupplier);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("NewSupplier", "Supplier", new { status = "Success" });
+        }
+
         [HttpGet("Supplier/View")]
-        public IActionResult Suppliers()
+        public IActionResult ViewSuppliers()
         {
             dynamic model = new ExpandoObject();
 
@@ -70,7 +108,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("ViewSuppliers", model);
         }
 
-        [HttpGet("Supplier/View/EditSupplier/{id}")]
+        [HttpGet("Supplier/View/Edit/{id}")]
         public IActionResult EditSupplier(int id)
         {
             dynamic model = new ExpandoObject();
@@ -109,7 +147,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("NewSupplier", model);
         }
 
-        [HttpGet("Supplier/View/DeleteSupplier/{id}")]
+        [HttpGet("Supplier/View/Delete/{id}")]
         public IActionResult DeleteSupplier(int id)
         {
             _context.ProductSupplier.RemoveRange(_context.ProductSupplier.Where(x => x.SupplierId == id));
@@ -119,42 +157,9 @@ namespace Pita_Pit_Inventory.Controllers
             _context.Suppliers.Remove(supplier);
             _context.SaveChanges();
 
-            return RedirectToActionPermanent("Suppliers", "Supplier");
+            return RedirectToAction("EditSupplier", "Supplier");
         }
+        #endregion
 
-        [HttpPost("Supplier/New/AddSupplier")]
-        public IActionResult AddSupplier(string supplierSKU, string supplierName, string supplierAddress, string supplierEmail, string[] productList, string supplierNote)
-        {
-            int lastInsertedId = 0;
-
-            // Supplier entry
-            Suppliers supplier = new Suppliers()
-            {
-                SupplierSku = supplierSKU,
-                SupplierName = supplierName,
-                SupplierAddress = supplierAddress,
-                SupplierEmail = supplierEmail,
-                SupplierNote = supplierNote
-            };
-
-            _context.Suppliers.Add(supplier);
-            _context.SaveChanges();
-
-            lastInsertedId = supplier.SupplierId;
-
-            // Product_Supplier entry (one to many)
-            for (int i = 0; i < productList.Length; i++)
-            {
-                ProductSupplier productSupplier = new ProductSupplier()
-                {
-                    ProductId = int.Parse(productList[i]),
-                    SupplierId = lastInsertedId
-                };
-
-                _context.ProductSupplier.Add(productSupplier);
-                _context.SaveChanges();
-            }
-            return RedirectToAction("NewSupplierPage", "Supplier", new { status = "Success" });
-        }
     }
 }
