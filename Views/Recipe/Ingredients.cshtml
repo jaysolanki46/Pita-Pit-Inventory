@@ -22,7 +22,7 @@
 <html lang="en">
 
 <head>
-    <title>Pita Pit - Ingredient</title>
+    <title>Pita Pit - Ingredients</title>
     @Html.Partial("~/Views/Shared/Header.html")
 </head>
 
@@ -44,8 +44,8 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1 class="h3 mb-2 text-gray-800">Ingredient</h1>
                     <form id="Ingredient-form" name="Ingredient-form" action="Ingredients/Add" method="post">
+                        <h1 class="h3 mb-2 text-gray-800">Ingredient</h1>
                         <div class="mb-4">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -56,19 +56,18 @@
                                                 <div class="col-lg-12">
                                                     <div class="p-lg-3">
                                                         <b><label>Ingredients</label></b><hr />
-                                                                                         <div class="form-row">
-                                                                                             @* Hidden *@
-                                                                                             <input type="hidden" class="form-control" id="ingredientItemId" name="ingredientItemId" value="@Id">
-
-                                                                                             <div class="form-group col-md-6">
-                                                                                                 <label for="ingredientItemCode">Code</label>
-                                                                                                 <input type="text" class="form-control" id="ingredientItemCode" name="ingredientItemCode" placeholder="Ex. #0215" value="@Code">
-                                                                                             </div>
-                                                                                             <div class="form-group col-md-6">
-                                                                                                 <label for="ingredientItemName">Name</label>
-                                                                                                 <input type="text" class="form-control" id="ingredientItemName" name="ingredientItemName" placeholder="Ex. Onions/Sour Cream" value="@Name">
-                                                                                             </div>
-                                                                                         </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                @* Hidden *@
+                                                                <input type="hidden" class="form-control" id="ingredientItemId" name="ingredientItemId" value="@Id">
+                                                                <label for="ingredientItemCode">Code</label>
+                                                                <input type="text" class="form-control" id="ingredientItemCode" name="ingredientItemCode" placeholder="Ex. #0215" value="@Code">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="ingredientItemName">Name</label>
+                                                                <input type="text" class="form-control" id="ingredientItemName" name="ingredientItemName" placeholder="Ex. Onions/Sour Cream" value="@Name">
+                                                            </div>
+                                                        </div>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="ingredientItemQty">Qty</label>

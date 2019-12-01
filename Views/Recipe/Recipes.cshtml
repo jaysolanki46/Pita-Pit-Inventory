@@ -21,7 +21,7 @@
     <html lang="en">
 
     <head>
-        <title>Pita Pit - Recipe</title>
+        <title>Pita Pit - Recipes</title>
         @Html.Partial("~/Views/Shared/Header.html")
     </head>
 
@@ -69,7 +69,7 @@
                                                                 </div>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">ADD</button>
-                                                            <button type="button" class="btn btn-danger">CANCEL</button>
+                                                            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Recipes", "Recipe")'">CANCEL</button>
                                                         </div>
                                                     </div>
                                                 </div>

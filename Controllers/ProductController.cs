@@ -96,6 +96,7 @@ namespace Pita_Pit_Inventory.Controllers
                                 Name = p.ProductName,
                                 PackSize = p.ProductPackSize,
                                 QtyInPack = p.ProductQtyInPack,
+                                TotalQty = p.ProductTotalQty,
                                 Location = l.LocationName,
                                 Group = g.GroupName,
                                 IsPerishable = p.ProductIsPerishable
@@ -114,10 +115,19 @@ namespace Pita_Pit_Inventory.Controllers
             var groups = _context.Groups.ToList();
             var locations = _context.Locations.ToList();
             var product = _context.Products.Where(x => x.ProductId == id);
+            var suppliers = (from s in _context.Suppliers
+                        join ps in _context.ProductSupplier on s.SupplierId equals ps.SupplierId
+                        where ps.ProductId == id
+                        select new SuppliersViewModel
+                        {
+                           Id = s.SupplierId,
+                           Name = s.SupplierName
+                        }).ToList();
 
             model.Groups = groups;
             model.Locations = locations;
             model.Product = product;
+            model.Suppliers = suppliers;
 
             return View("EditProduct", model);
         }

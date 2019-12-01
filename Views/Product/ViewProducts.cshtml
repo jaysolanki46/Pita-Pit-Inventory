@@ -41,27 +41,19 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>SKU</th>
                                             <th>Name</th>
                                             <th>Price</th>
-                                            <th>Pack Size</th>
-                                            <th>Qty In Pack</th>
-                                            <th>Location</th>
-                                            <th>Group</th>
-                                            <th>Perishable</th>
+                                            <th>Total Qty</th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>SKU</th>
                                             <th>Name</th>
                                             <th>Price</th>
-                                            <th>Pack Size</th>
-                                            <th>Qty In Pack</th>
-                                            <th>Location</th>
-                                            <th>Group</th>
-                                            <th>Perishable</th>
+                                            <th>Total Qty</th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </tfoot>
@@ -71,18 +63,15 @@
                                         {
                                             var id = @item.Id;
                                             <tr>
-                                                <td>@item.Sku</td>
                                                 <td>@item.Name</td>
                                                 <td>@item.Price</td>
-                                                <td>@item.PackSize</td>
-                                                <td>@item.QtyInPack</td>
-                                                <td>@item.Location</td>
-                                                <td>@item.Group</td>
-                                                <td>@item.IsPerishable</td>
-                                                <td>
+                                                <td>@item.TotalQty</td>
+                                                <td width="50px">
                                                     <a href="View/Edit/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
+                                                </td>
+                                                <td width="50px">
                                                     <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
