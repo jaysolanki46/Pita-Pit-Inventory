@@ -44,7 +44,7 @@
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
                         <h1 class="h3 mb-2 text-gray-800">Recipe</h1>
-                        <form id="Recipe-form" name="Recipe-form" action="Recipes/AddRecipe" method="post">
+                        <form id="Recipe-form" name="Recipe-form" action="Recipes/Add" method="post">
                             <div class="mb-4">
                                 <div class="row">
                                     <div class="col-lg-9">
@@ -143,7 +143,7 @@
                                                         <td>@item.Name</td>
                                                         <td>@item.IngredientList</td>
                                                         <td>
-                                                            <a href="Recipes/EditRecipe/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                            <a href="Recipes/Edit/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                             <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
@@ -243,7 +243,7 @@
             confirmButtonText: 'Yes, delete it'
         }).then((result) => {
             if (result.value) {
-                $.get("Recipes/DeleteRecipe/" + deleteId, function (data, status) {
+                $.get("Recipes/Delete/" + deleteId, function (data, status) {
                     swal({
                         title: "Deleted!",
                         text: "Recipe has been deleted.",

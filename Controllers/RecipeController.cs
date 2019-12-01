@@ -24,7 +24,7 @@ namespace Pita_Pit_Inventory.Controllers
         }
 
         #region Recipes
-        [HttpGet("Recipes")]
+        [HttpGet("Recipe/Recipes")]
         public IActionResult Recipes(string status)
         {
             dynamic model = new ExpandoObject();
@@ -60,7 +60,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Recipes", model);
         }
 
-        [HttpPost("Recipes/AddRecipe")]
+        [HttpPost("Recipe/Recipes/Add")]
         public IActionResult AddRecipe(string recipeName, string recipePrice, string[] ingredientList)
         {
             int lastInsertedId = 0;
@@ -93,7 +93,7 @@ namespace Pita_Pit_Inventory.Controllers
             return RedirectToAction("Recipes", "Recipe", new { status = "Success" });
         }
 
-        [HttpGet("Recipes/EditRecipe/{id}")]
+        [HttpGet("Recipe/Recipes/Edit/{id}")]
         public IActionResult EditRecipe(int id)
         {
             dynamic model = new ExpandoObject();
@@ -129,7 +129,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Recipes", model);
         }
 
-        [HttpGet("Recipes/DeleteRecipe/{id}")]
+        [HttpGet("Recipe/Recipes/Delete/{id}")]
         public IActionResult DeleteRecipe(int id)
         {
             _context.RecipeIngredients.RemoveRange(_context.RecipeIngredients.Where(x => x.RecipeId == id));
@@ -143,7 +143,7 @@ namespace Pita_Pit_Inventory.Controllers
         }
         #endregion
 
-        #region Recipe/Ingredient
+        #region Ingredient
         [HttpGet("Recipe/Ingredients")]
         public IActionResult Ingredients(string status)
         {
@@ -157,7 +157,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Ingredients", model);
         }
 
-        [HttpPost("Recipe/AddIngredient")]
+        [HttpPost("Recipe/Ingredients/Add")]
         public IActionResult AddIngredient(string ingredientItemCode, string ingredientItemName, string ingredientItemQty, string ingredientItemSize)
         {
             Ingredients ingredient = new Ingredients()
@@ -174,8 +174,8 @@ namespace Pita_Pit_Inventory.Controllers
             return RedirectToAction("Ingredients", "Recipe", new { status = "Success" });
         }
 
-        [HttpGet("Recipe/Ingredients/Ingredient/{id}")]
-        public IActionResult Ingredient(int id)
+        [HttpGet("Recipe/Ingredients/Edit/{id}")]
+        public IActionResult EditIngredient(int id)
         {
             var ingredient = _context.Ingredients.Where(x => x.IngredientItemId == id);
             var ingredients = _context.Ingredients.ToList();
@@ -187,7 +187,7 @@ namespace Pita_Pit_Inventory.Controllers
             return View("Ingredients", model);
         }
 
-        [HttpGet("Recipe/Ingredients/DeleteIngredient/{id}")]
+        [HttpGet("Recipe/Ingredients/Delete/{id}")]
         public IActionResult DeleteIngredient(int id)
         {
             Ingredients ingredient = _context.Ingredients.Where(x => x.IngredientItemId == id).FirstOrDefault<Ingredients>();

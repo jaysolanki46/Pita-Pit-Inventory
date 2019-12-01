@@ -45,7 +45,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <h1 class="h3 mb-2 text-gray-800">Ingredient</h1>
-                    <form id="Ingredient-form" name="Ingredient-form" action="AddIngredient" method="post">
+                    <form id="Ingredient-form" name="Ingredient-form" action="Ingredients/Add" method="post">
                         <div class="mb-4">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -127,7 +127,7 @@
                                                     <td>@item.IngredientItemName</td>
                                                     <td>@item.IngredientItemQtyInSize  @item.IngredientItemSize</td>
                                                     <td>
-                                                        <a href="Ingredients/Ingredient/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
+                                                        <a href="Ingredients/Edit/@id" class="btn btn-info float-sm-left btn-circle btn-sm">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <a onclick="Confirm(@id)" class="btn btn-danger float-sm-right btn-circle btn-sm">
@@ -182,7 +182,7 @@
             confirmButtonText: 'Yes, delete it'
         }).then((result) => {
             if (result.value) {
-                $.get("Ingredients/DeleteIngredient/" + deleteId, function (data, status) {
+                $.get("Ingredients/Delete/" + deleteId, function (data, status) {
                     swal({
                         title: "Deleted!",
                         text: "Ingredient has been deleted.",
