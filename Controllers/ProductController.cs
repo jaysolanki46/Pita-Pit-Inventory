@@ -85,6 +85,7 @@ namespace Pita_Pit_Inventory.Controllers
         {
             dynamic model = new ExpandoObject();
 
+            // get product by joining Location and group
             var products = (from p in _context.Products
                             join l in _context.Locations on p.ProductLocationId equals l.LocationId
                             join g in _context.Groups on p.ProductGroupId equals g.GroupId
